@@ -7,19 +7,39 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.pocket_sonnet.databinding.FragmentSecondBinding;
 
-public class SecondFragment extends Fragment {
+public class SecondFragment extends AppCompatActivity {
 
     private FragmentSecondBinding binding;
 
     Button findImagesButton;
 
-    @Override
-    public View onCreateView(
+    protected void onCreate(Bundle savedInstanceState){
+
+        super.onCreate(savedInstanceState);
+
+
+        // make the vars
+        findImagesButton = findViewById(R.id.find_images_button);
+
+
+        // Set a listener for making the request
+
+
+        // onClick, run the Runnable()
+
+
+    }
+
+
+
+
+   /* public View onCreateView(
             LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState
     ) {
@@ -41,14 +61,7 @@ public class SecondFragment extends Fragment {
             }
         });
 
-        // make the vars
-        findImagesButton = findViewById(R.id.find_images_button);
 
-
-        // Set a listener for making the request
-
-
-        // onClick, run the Runnable()
 
     }
 
@@ -56,6 +69,9 @@ public class SecondFragment extends Fragment {
     public void onDestroyView() {
         super.onDestroyView();
         binding = null;
-    }
+    } */
+
+
+
 
 }
