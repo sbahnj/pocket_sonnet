@@ -25,7 +25,7 @@ public class SecondFragment extends AppCompatActivity {
 
 
         // make the vars
-        findImagesButton = findViewById(R.id.find_images_button);
+       // findImagesButton = findViewById(R.id.find_images_button);
 
 
         // Set a listener for making the request
