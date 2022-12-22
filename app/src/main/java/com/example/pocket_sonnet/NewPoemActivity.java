@@ -45,6 +45,10 @@ public class NewPoemActivity extends AppCompatActivity {
                     @Override
                     public void run() {
 
+                        //TODO get some sort of Internet permissions
+
+
+
                         // Apply the search term to the string
                         AsyncHttpClient client = new AsyncHttpClient();
 
