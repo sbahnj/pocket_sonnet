@@ -54,20 +54,22 @@ public class NewPoemActivity extends AppCompatActivity {
 
 
 
+
                     // make a handler for the search
                     handler.post(new Runnable() {
 
 
 
-                                     @Override
-                                     public void run() {
+
+                                         @Override
+                                         public void run () {
 
                                          // define the range
                                          int max = 470000;
                                          int min = 1;
                                          int range = max - min + 1;
 
-                                         int rand = (int)(Math.random() * range) + min;
+                                         int rand = (int) (Math.random() * range) + min;
 
                                          int object_ID = rand;
 
@@ -77,10 +79,8 @@ public class NewPoemActivity extends AppCompatActivity {
                                          // TODO: catch case if the object doesn't have an image
                                          // TODO: catch case if objectID doesn't exist
 
-                                         String url_string=
+                                         String url_string =
                                                  "https://collectionapi.metmuseum.org/public/collection/v1/objects/" + object_ID;
-
-
 
 
                                          // Find the object matching the random ID
@@ -100,12 +100,18 @@ public class NewPoemActivity extends AppCompatActivity {
 
                                                  Log.d("failure", "no object found");
 
+                                                 // Click the button again
+                                                 findImagesButton.callOnClick();
+
                                              }
                                          });
 
 
                                      }
-                                 }
+
+
+            }
+
 
                     );
 
