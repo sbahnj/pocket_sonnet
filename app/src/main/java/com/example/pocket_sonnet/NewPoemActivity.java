@@ -13,6 +13,9 @@ import com.squareup.picasso.Picasso;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.Arrays;
+import java.util.Objects;
+
 import cz.msebera.android.httpclient.Header;
 
 
@@ -83,10 +86,39 @@ public class NewPoemActivity extends AppCompatActivity {
 
                                                          Log.d("object info", object_info);
 
-                                                         // Get the image url from the object info
+                                                         // Get the image url from the object info:
 
-                                                         // Load the image into the ImageView
-                                                         Picasso.get().load("https://images.metmuseum.org/CRDImages/ad/web-large/ap56.108.2.jpg").into(imageView);
+                                                         // Split the object info on commas
+                                                         String[] object_info_split = object_info.split(",");
+
+                                                         // Find the part that contains the small object image
+                                                         for(int k = 0; k < object_info_split.length; k++){
+                                                             if(object_info_split[k].contains("primaryImageSmall")){
+                                                                 Log.d("object image", object_info_split[k]);
+
+                                                                 // Get the web address for the image
+                                                                 String[] object_image_split = object_info_split[k].split("\"");
+                                                                 Log.d("image address", Arrays.toString(object_image_split));
+
+                                                                 // If the length of the array is less than 4 (meaning no image url), try again
+                                                                 if (object_image_split.length < 4){
+
+                                                                     Log.d("no image message", "no image found");
+                                                                     // If no image is found, click the button again
+                                                                     findImagesButton.callOnClick();
+                                                                 }
+
+                                                                 // Load the image into the ImageView
+                                                                 Picasso.get().load(object_image_split[3]).into(imageView);
+
+
+
+
+
+
+                                                             }
+                                                         }
+
 
 
 
