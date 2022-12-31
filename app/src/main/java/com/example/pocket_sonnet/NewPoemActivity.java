@@ -111,6 +111,8 @@ public class NewPoemActivity extends AppCompatActivity {
                                                                  // Load the image into the ImageView
                                                                  Picasso.get().load(object_image_split[3]).into(imageView);
 
+                                                                 // TODO: display 2 images
+
 
 
 
