@@ -5,9 +5,11 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.os.Handler;
+import android.widget.ImageView;
 
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
+import com.squareup.picasso.Picasso;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -29,6 +31,8 @@ public class NewPoemActivity extends AppCompatActivity {
         // set the vars
         findImagesButton = findViewById(R.id.FindImagesButton);
         final String[] info = {""};
+        ImageView imageView = findViewById(R.id.imageView);
+
 
 
         // set a listener for making the request
@@ -78,6 +82,11 @@ public class NewPoemActivity extends AppCompatActivity {
                                                          info[0] = object_info;
 
                                                          Log.d("object info", object_info);
+
+                                                         // Get the image url from the object info
+
+                                                         // Load the image into the ImageView
+                                                         Picasso.get().load("https://images.metmuseum.org/CRDImages/ad/web-large/ap56.108.2.jpg").into(imageView);
 
 
 
