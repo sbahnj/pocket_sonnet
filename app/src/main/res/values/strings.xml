@@ -8,5 +8,6 @@
     <string name="previous">Previous</string>
     <string name="real_title">This is the real one</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
-    <string name="find_images_button">find images</string>
+    <string name="find_first_image_button">find first image</string>
+    <string name="find_second_image_button">find second image</string>
 </resources>
