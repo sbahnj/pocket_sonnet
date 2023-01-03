@@ -21,7 +21,8 @@ import cz.msebera.android.httpclient.Header;
 
 public class NewPoemActivity extends AppCompatActivity {
 
-    Button findImagesButton;
+    Button findFirstImageButton;
+    Button findSecondImageButton;
 
     final Handler handler = new Handler();
 
@@ -32,14 +33,16 @@ public class NewPoemActivity extends AppCompatActivity {
         setContentView(R.layout.activity_new_poem);
 
         // set the vars
-        findImagesButton = findViewById(R.id.FindImagesButton);
+        findFirstImageButton = findViewById(R.id.FindFirstImageButton);
+        findSecondImageButton = findViewById(R.id.findSecondImageButton);
         final String[] info = {""};
         ImageView imageView = findViewById(R.id.imageView);
+        ImageView imageView2 = findViewById(R.id.imageView2);
 
 
 
-        // set a listener for making the request
-        findImagesButton.setOnClickListener(new View.OnClickListener(){
+        // set a listener for making the request from the first button
+        findFirstImageButton.setOnClickListener(new View.OnClickListener(){
 
 
             // onClick, run the Runnable()
@@ -105,7 +108,7 @@ public class NewPoemActivity extends AppCompatActivity {
 
                                                                      Log.d("no image message", "no image found");
                                                                      // If no image is found, click the button again
-                                                                     findImagesButton.callOnClick();
+                                                                     findFirstImageButton.callOnClick();
                                                                  }
 
                                                                  // Load the image into the ImageView
@@ -135,7 +138,7 @@ public class NewPoemActivity extends AppCompatActivity {
                                                          Log.d("failure", "no object found");
 
                                                          // If no object is found, click the button again
-                                                         findImagesButton.callOnClick();
+                                                         findFirstImageButton.callOnClick();
 
 
 
@@ -148,6 +151,114 @@ public class NewPoemActivity extends AppCompatActivity {
 
             }
                     );
+
+            }
+        });
+
+        // Set a listener for making a request from the second button
+        findSecondImageButton.setOnClickListener(new View.OnClickListener(){
+
+
+            // onClick, run the Runnable()
+            @Override
+            public void onClick(View v) {
+
+
+                // make a handler for the search
+                handler.post(new Runnable() {
+
+
+                                 @Override
+                                 public void run () {
+
+
+                                     // define the range
+                                     int max = 470000;
+                                     int min = 1;
+                                     int range = max - min + 1;
+
+                                     int rand = (int) (Math.random() * range) + min;
+
+                                     int object_ID = rand;
+
+                                     Log.d("object ID", String.valueOf(object_ID));
+
+
+                                     // TODO: catch case if the object doesn't have an image
+
+
+                                     String url_string =
+                                             "https://collectionapi.metmuseum.org/public/collection/v1/objects/" + object_ID;
+
+
+                                     // Find the object matching the random ID
+                                     AsyncHttpClient client = new AsyncHttpClient();
+
+                                     client.get(url_string, new AsyncHttpResponseHandler() {
+                                         @Override
+                                         public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+
+                                             String object_info = new String(responseBody);
+                                             info[0] = object_info;
+
+                                             Log.d("object info", object_info);
+
+                                             // Get the image url from the object info:
+
+                                             // Split the object info on commas
+                                             String[] object_info_split = object_info.split(",");
+
+                                             // Find the part that contains the small object image
+                                             for(int k = 0; k < object_info_split.length; k++){
+                                                 if(object_info_split[k].contains("primaryImageSmall")){
+                                                     Log.d("object image", object_info_split[k]);
+
+                                                     // Get the web address for the image
+                                                     String[] object_image_split = object_info_split[k].split("\"");
+                                                     Log.d("image address", Arrays.toString(object_image_split));
+
+                                                     // If the length of the array is less than 4 (meaning no image url), try again
+                                                     if (object_image_split.length < 4){
+
+                                                         Log.d("no image message", "no image found");
+                                                         // If no image is found, click the button again
+                                                         findSecondImageButton.callOnClick();
+                                                     }
+
+                                                     // Load the image into the ImageView
+                                                     Picasso.get().load(object_image_split[3]).into(imageView2);
+
+
+
+
+                                                 }
+                                             }
+
+
+
+                                         }
+
+
+
+                                         @Override
+                                         public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+
+                                             Log.d("failure", "no object found");
+
+                                             // If no object is found, click the button again
+                                             findSecondImageButton.callOnClick();
+
+
+
+                                         }
+                                     });
+
+
+
+                                 }
+
+                             }
+                );
 
             }
         });
