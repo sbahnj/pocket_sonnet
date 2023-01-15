@@ -5,11 +5,13 @@ import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
+import com.squareup.picasso.Picasso;
 
 import cz.msebera.android.httpclient.Header;
 
@@ -24,6 +26,7 @@ public class MakeTitleActivity extends AppCompatActivity {
 
         // Set the screen items
         make_title_button = findViewById(R.id.find_title_button);
+        TextView textView = findViewById(R.id.poem_title);
 
         final Handler handler = new Handler();
 
@@ -74,6 +77,13 @@ public class MakeTitleActivity extends AppCompatActivity {
                                         Log.d("object title", object_info_split[k]);}
 
 
+                                    // TODO This isn't displaying the object title
+                                    // Load the title into the TextView
+                                    textView.setText(object_info_split[k]);
+
+
+
+
                                 }
 
                             }
@@ -103,7 +113,7 @@ public class MakeTitleActivity extends AppCompatActivity {
         });
 
 
-        // Find a random ID and display its title in a TextView
+
 
 
     }
