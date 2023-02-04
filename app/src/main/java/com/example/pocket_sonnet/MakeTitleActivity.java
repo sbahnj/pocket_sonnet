@@ -13,6 +13,8 @@ import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.squareup.picasso.Picasso;
 
+import java.util.Arrays;
+
 import cz.msebera.android.httpclient.Header;
 
 public class MakeTitleActivity extends AppCompatActivity {
@@ -76,20 +78,16 @@ public class MakeTitleActivity extends AppCompatActivity {
                                     if(object_info_split[k].contains("title")){
                                         Log.d("object title", object_info_split[k]);
 
-                                        // TODO remove "title" text
-                                        // split at semicolon, use second item
+
+                                        String[] split_title = object_info_split[k].split(":");
+                                        // split at colon, use second item
                                         // Load the title into the TextView
-                                        textView.setText(object_info_split[k]);
+                                        textView.setText(split_title[1]);
 
 
 
 
                                     }
-
-
-
-
-
 
 
                                 }
