@@ -74,12 +74,20 @@ public class MakeTitleActivity extends AppCompatActivity {
                                 // Find the part that contains the title
                                 for(int k = 0; k < object_info_split.length; k++){
                                     if(object_info_split[k].contains("title")){
-                                        Log.d("object title", object_info_split[k]);}
+                                        Log.d("object title", object_info_split[k]);
+
+                                        // TODO remove "title" text
+                                        // split at semicolon, use second item
+                                        // Load the title into the TextView
+                                        textView.setText(object_info_split[k]);
 
 
-                                    // TODO This isn't displaying the object title
-                                    // Load the title into the TextView
-                                    textView.setText(object_info_split[k]);
+
+
+                                    }
+
+
+
 
 
 
