@@ -17,6 +17,8 @@ import java.util.Arrays;
 
 import cz.msebera.android.httpclient.Header;
 
+//TODO: once title is found, display images and title on Compose screen
+
 public class MakeTitleActivity extends AppCompatActivity {
 
     Button make_title_button;
