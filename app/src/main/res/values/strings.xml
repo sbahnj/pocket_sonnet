@@ -11,6 +11,9 @@
     <string name="find_first_image_button">find first image</string>
     <string name="find_second_image_button">find second image</string>
     <string name="next_button_text">Next</string>
+
     <string name="poem_title">Poem Title</string>
     <string name="find_title">Find Title</string>
+
+
 </resources>

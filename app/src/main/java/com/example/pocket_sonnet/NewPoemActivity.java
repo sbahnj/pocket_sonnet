@@ -19,11 +19,12 @@ import java.util.Objects;
 
 import cz.msebera.android.httpclient.Header;
 
-
+//TODO link page to Find Title activity
 public class NewPoemActivity extends AppCompatActivity {
 
     Button findFirstImageButton;
     Button findSecondImageButton;
+    Button nextButton;
 
     final Handler handler = new Handler();
 
@@ -36,6 +37,8 @@ public class NewPoemActivity extends AppCompatActivity {
         // set the vars
         findFirstImageButton = findViewById(R.id.FindFirstImageButton);
         findSecondImageButton = findViewById(R.id.findSecondImageButton);
+        nextButton = findViewById(R.id.next_button);
+        nextButton.setVisibility(View.INVISIBLE);
         final String[] info = {""};
         ImageView imageView = findViewById(R.id.imageView);
         ImageView imageView2 = findViewById(R.id.imageView2);
@@ -85,6 +88,8 @@ public class NewPoemActivity extends AppCompatActivity {
                                                      @Override
                                                      public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
 
+
+
                                                          String object_info = new String(responseBody);
                                                          info[0] = object_info;
 
@@ -107,7 +112,7 @@ public class NewPoemActivity extends AppCompatActivity {
                                                                  // If the length of the array is less than 4 (meaning no image url), try again
                                                                  if (object_image_split.length < 4){
 
-                                                                     Log.d("no image message", "no image found");
+                                                                     Log.d("no image message", "no image1 found");
                                                                      // If no image is found, click the button again
                                                                      findFirstImageButton.callOnClick();
                                                                  }
@@ -199,6 +204,9 @@ public class NewPoemActivity extends AppCompatActivity {
                                          @Override
                                          public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
 
+                                             // When the second image is found, show the Next button
+                                             nextButton.setVisibility(View.VISIBLE);
+
                                              String object_info = new String(responseBody);
                                              info[0] = object_info;
 
@@ -221,7 +229,7 @@ public class NewPoemActivity extends AppCompatActivity {
                                                      // If the length of the array is less than 4 (meaning no image url), try again
                                                      if (object_image_split.length < 4){
 
-                                                         Log.d("no image message", "no image found");
+                                                         Log.d("no image message", "no image2 found");
                                                          // If no image is found, click the button again
                                                          findSecondImageButton.callOnClick();
                                                      }
@@ -266,6 +274,7 @@ public class NewPoemActivity extends AppCompatActivity {
 
     }
 
+
     // Call this when the user taps the Next button (make title)
     public void makeTitle(View view){
 
@@ -274,6 +283,9 @@ public class NewPoemActivity extends AppCompatActivity {
 
 
     }
+
+    // Call this when the user taps the Next button
+
 
 
 }
