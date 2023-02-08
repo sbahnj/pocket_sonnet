@@ -99,6 +99,8 @@ public class MakeTitleActivity extends AppCompatActivity {
 
                                 Log.d("failure", "no object found for title generation");
 
+
+
                             }
                         });
 
