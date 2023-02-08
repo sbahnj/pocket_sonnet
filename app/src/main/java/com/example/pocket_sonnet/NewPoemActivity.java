@@ -19,7 +19,7 @@ import java.util.Objects;
 
 import cz.msebera.android.httpclient.Header;
 
-//TODO link page to Find Title activity
+
 public class NewPoemActivity extends AppCompatActivity {
 
     Button findFirstImageButton;
@@ -114,7 +114,14 @@ public class NewPoemActivity extends AppCompatActivity {
 
                                                                      Log.d("no image message", "no image1 found");
                                                                      // If no image is found, click the button again
-                                                                     findFirstImageButton.callOnClick();
+                                                                     //findFirstImageButton.callOnClick();
+
+                                                                     //TODO: sometimes "user-space exception detected! (Does this happen if you click the button three times?)
+
+                                                                     // If no image1 is found, load another image
+                                                                     imageView.setImageResource(R.drawable.ic_launcher_background);
+                                                                     Log.d("alternate image", "no image1 found, alternate image loaded");
+                                                                     break;
                                                                  }
 
                                                                  // Load the image into the ImageView
@@ -141,10 +148,10 @@ public class NewPoemActivity extends AppCompatActivity {
                                                      @Override
                                                      public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
 
-                                                         Log.d("failure", "no object found");
+                                                         Log.d("failure", "no object1 found");
 
-                                                         // If no object is found, click the button again
-                                                         findFirstImageButton.callOnClick();
+                                                         // If no object is found, load another image
+                                                         imageView.setImageResource(R.drawable.ic_launcher_background);
 
 
 
@@ -231,7 +238,11 @@ public class NewPoemActivity extends AppCompatActivity {
 
                                                          Log.d("no image message", "no image2 found");
                                                          // If no image is found, click the button again
-                                                         findSecondImageButton.callOnClick();
+                                                         //findSecondImageButton.callOnClick();
+
+                                                         // If no image2 is found, load another image
+                                                         imageView2.setImageResource(R.drawable.ic_launcher_background);
+                                                         break;
                                                      }
 
                                                      // Load the image into the ImageView
@@ -252,10 +263,13 @@ public class NewPoemActivity extends AppCompatActivity {
                                          @Override
                                          public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
 
-                                             Log.d("failure", "no object found");
+                                             Log.d("failure", "no object2 found");
 
                                              // If no object is found, click the button again
-                                             findSecondImageButton.callOnClick();
+                                             //findSecondImageButton.callOnClick();
+
+                                             // Load the alternate image
+                                             imageView2.setImageResource(R.drawable.ic_launcher_background);
 
 
 
