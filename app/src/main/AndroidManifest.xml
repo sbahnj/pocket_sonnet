@@ -16,6 +16,7 @@
         android:theme="@style/Theme.Pocket_sonnet"
         tools:targetApi="31">
         <activity android:name=".NewPoemActivity" />
+        <activity android:name=".MakeTitleActivity" />
         <activity
             android:name=".MainActivity"
             android:exported="true"

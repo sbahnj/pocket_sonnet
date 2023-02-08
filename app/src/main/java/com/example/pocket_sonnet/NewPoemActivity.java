@@ -1,5 +1,6 @@
 package com.example.pocket_sonnet;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -273,7 +274,18 @@ public class NewPoemActivity extends AppCompatActivity {
 
     }
 
+
+    // Call this when the user taps the Next button (make title)
+    public void makeTitle(View view){
+
+        Intent intent = new Intent(this, MakeTitleActivity.class);
+        startActivity(intent);
+
+
+    }
+
     // Call this when the user taps the Next button
+
 
 
 }
