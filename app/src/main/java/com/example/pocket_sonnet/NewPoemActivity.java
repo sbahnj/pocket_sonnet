@@ -74,7 +74,7 @@ public class NewPoemActivity extends AppCompatActivity {
                                                  Log.d("object ID", String.valueOf(object_ID));
 
 
-                                                 // TODO: catch case if the object doesn't have an image
+                                                 // TODO: catch case if the object doesn't have an image: show another image?
 
 
                                                  String url_string =
@@ -120,7 +120,7 @@ public class NewPoemActivity extends AppCompatActivity {
                                                                  // Load the image into the ImageView
                                                                  Picasso.get().load(object_image_split[3]).into(imageView);
 
-                                                                 // TODO: display 2 images
+
 
 
 
