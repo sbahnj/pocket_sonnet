@@ -87,6 +87,8 @@ public class NewPoemActivity extends AppCompatActivity {
                                                      @Override
                                                      public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
 
+
+
                                                          String object_info = new String(responseBody);
                                                          info[0] = object_info;
 
@@ -201,6 +203,9 @@ public class NewPoemActivity extends AppCompatActivity {
                                          @Override
                                          public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
 
+                                             // When the second image is found, show the Next button
+                                             nextButton.setVisibility(View.VISIBLE);
+
                                              String object_info = new String(responseBody);
                                              info[0] = object_info;
 
@@ -267,6 +272,8 @@ public class NewPoemActivity extends AppCompatActivity {
         });
 
     }
+
+    // Call this when the user taps the Next button
 
 
 }
